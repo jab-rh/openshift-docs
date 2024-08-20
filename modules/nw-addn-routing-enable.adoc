@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * TBD
+
+:_mod-docs-content-type: PROCEDURE
+[id="_{context}"]
+= Enabling additional routing capabilities
+
+.Prerequisites
+
+* Install the {oc-first}.
+* You are logged in to the cluster as a user with `cluster-admin` privileges.
+
+.Procedure
+
+. To enable , enter the following command:
++
+[source,terminal]
+----
+$ oc patch networks.operator.openshift.io cluster --type=merge \
+-p '{
+  "spec":{
+    "defaultNetwork":{
+      "ovnKubernetesConfig":{
+        "ipsecConfig":{
+          "mode":<mode>
+        }}}}}'
+----
