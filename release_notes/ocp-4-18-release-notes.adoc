@@ -547,6 +547,23 @@ This is an alternative to explicitly setting an ASN in the `spec.peerASN` field.
 With this release, you can configure a Remote Direct Memory Access (RDMA) Container Network Interface (CNI) on Single Root I/O Virtualization (SR-IOV) to enable high-performance, low-latency communication between containers. 
 When you combine RDMA with SR-IOV, you provide a mechanism to expose hardware counters of Mellanox Ethernet devices to be used inside Data Plane Development Kit (DPDK) applications.
 
+[id="ocp-release-notes-networking-ovn-kubernetes-secondary-network-localnet-physical-network-name_{context}"]
+==== OVN-Kubernetes secondary network support for sharing a physical network between localnets
+
+When configuring a secondary network that uses the `localnet` topology, you can now specify a physical network name with the `physicalNetworkName` field. By default, this value is set to the name of the localnet. Multiple localnets can share the same physical network.
+
+For more information, see xref:../networking/multiple_networks/secondary_networks/creating-secondary-nwt-ovnk.a
+doc#configuration-ovnk-network-plugin-json-object_configuring-additional-network-ovnk[Configuring a secondary network that uses the localnet topology].
+
+[id="ocp-release-notes-networking-network-attachment-definition_{context}"]
+==== Network attachments support dynamic reconfiguration
+
+Previously, the `NetworkAttachmentDefinition` CR was immutable. With this release, you can edit an existing `NetworkAttachmentDefinition` CR. Support for editing makes it easier to accommodate changes in the underlying network infrastructure, such as adjusting the MTU of a network interface.
+
+You must ensure that the configurations of each `NetworkAttachmentDefinition` CR that reference the same network `name` and `type: ovn-k8s-cni-overlay` are in sync. Only when these values are in sync is the network attachment update successful. If the configurations are not in sync, the behavior is undefined because there is no guarantee about which `NetworkAttachmentDefinition` CR {product-title} uses for the configuration.
+
+You still must restart any workloads that use the network attachment definition for the network changes to take effect for those pods.
+
 [id="ocp-release-notes-nodes_{context}"]
 === Nodes
 
