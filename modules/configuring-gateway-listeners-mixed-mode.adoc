@@ -4,7 +4,7 @@
 //
 :_mod-docs-content-type: PROCEDURE
 [id="configuring-gateway-listeners-mixed-mode_{context}"]
-= Configure mixed-mode listeners on a shared port
+= Configuring mixed-mode listeners on a shared port
 
 [role="_abstract"]
 To serve terminated HTTPS traffic and TLS passthrough on the same port, you can configure two listeners with distinct hostnames. One listener uses `HTTPS` with `tls.mode: Terminate` for `HTTPRoute` custom resources (CRs). The other uses `TLS` with `tls.mode: Passthrough` for `TLSRoute` CRs. {product-title} routes can mix edge and passthrough on port `443` by using Server Name Indication (SNI).

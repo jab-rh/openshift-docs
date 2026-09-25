@@ -4,7 +4,7 @@
 //
 :_mod-docs-content-type: PROCEDURE
 [id="configuring-tls-passthrough-listener_{context}"]
-= Configure a TLS passthrough listener
+= Configuring a TLS passthrough listener
 
 [role="_abstract"]
 To forward encrypted TLS connections without decrypting them at the gateway, you must add a listener that uses the `TLS` protocol and `Passthrough` mode. The listener inspects the Server Name Indication (SNI) hostname and passes the TLS stream to a `TLSRoute` custom resource (CR). The backend service presents the certificate and terminates TLS.
